@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  SHELTER_ADMIN
+  STAFF
+  VOLUNTEER
+}
+
+enum Sex {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+enum Size {
+  SMALL
+  MEDIUM
+  LARGE
+  XL
+  UNKNOWN
+}
+
+enum DogStatus {
+  AVAILABLE
+  ON_HOLD
+  ADOPTED
+  FOSTERED
+  MEDICAL
+  UNKNOWN
+}
+
+model Shelter {
+  id           String   @id @default(uuid())
+  name         String
+  addressLine  String   @map("address_line")
+  city         String
+  region       String
+  country      String   @default("IT")
+  phone        String?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  users        User[]
+  dogs         Dog[]
+
+  @@map("shelters")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  fullName     String   @map("full_name")
+  role         Role
+  shelterId    String?  @map("shelter_id")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  shelter       Shelter?       @relation(fields: [shelterId], references: [id])
+  refreshTokens RefreshToken[]
+
+  @@index([email])
+  @@index([shelterId])
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  tokenHash String    @map("token_hash")
+  expiresAt DateTime  @map("expires_at")
+  revokedAt DateTime? @map("revoked_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+  @@map("refresh_tokens")
+}
+
+model Dog {
+  id              String     @id @default(uuid())
+  shelterId       String     @map("shelter_id")
+  name            String
+  sex             Sex
+  approxBirthdate DateTime?  @map("approx_birthdate") @db.Date
+  breed           String?
+  size            Size
+  weightKg        Decimal?   @map("weight_kg") @db.Decimal(5, 2)
+  microchipId     String?    @unique @map("microchip_id")
+  intakeDate      DateTime?  @map("intake_date") @db.Date
+  status          DogStatus
+  description     String?    @db.Text
+  deletedAt       DateTime?  @map("deleted_at")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  shelter Shelter @relation(fields: [shelterId], references: [id])
+
+  @@index([shelterId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("dogs")
+}

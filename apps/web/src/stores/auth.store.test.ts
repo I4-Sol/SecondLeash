@@ -1,5 +1,4 @@
-import { describe, it, expect } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 
 describe('Auth Store', () => {
@@ -7,7 +6,7 @@ describe('Auth Store', () => {
     setActivePinia(createPinia());
   });
 
-  it('should initialize with empty state', () => {
+  it('should initialize with empty state', async () => {
     const { useAuthStore } = await import('@/stores/auth.store');
     const authStore = useAuthStore();
 

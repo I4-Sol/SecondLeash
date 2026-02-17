@@ -43,6 +43,14 @@
   --border-color: var(--sky-blue);
   --border-light: var(--aquamarine);
 
+  /* PrimeVue 4 Compatibility Mappings */
+  --p-primary-color: var(--azure);
+  --p-primary-500: var(--azure);
+  --p-primary-hover-color: var(--cerulean);
+  --p-primary-active-color: var(--deep-sea-blue);
+  --p-content-color: var(--text-color);
+  --p-text-color: var(--text-color);
+
   /* Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -62,51 +70,54 @@ body {
   --primary-color-text: #ffffff;
 }
 
-.p-button {
+/* Increase specificity for PrimeVue components */
+body .p-button {
   background: var(--primary-color);
   border-color: var(--primary-color);
 }
 
-.p-button:hover {
+body .p-button:not(:disabled):hover {
   background: var(--primary-hover);
   border-color: var(--primary-hover);
 }
 
-.p-button:active {
+body .p-button:not(:disabled):active {
   background: var(--primary-active);
   border-color: var(--primary-active);
 }
 
-.p-button-secondary {
+body .p-button-secondary,
+body .p-button.p-button-secondary {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
-.p-button-success {
+body .p-button-success,
+body .p-button.p-button-success {
   background: var(--success-color);
   border-color: var(--success-color);
 }
 
-.p-inputtext:focus {
+body .p-inputtext:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 0.2rem rgba(0, 127, 255, 0.25);
 }
 
-.p-datatable .p-datatable-thead > tr > th {
+body .p-datatable .p-datatable-thead > tr > th {
   background: var(--bg-light);
   color: var(--text-color);
   border-color: var(--border-color);
 }
 
-.p-menubar {
+body .p-menubar {
   background: var(--primary-color);
   border-color: var(--primary-color);
 }
 
-.p-menubar .p-menuitem-link {
+body .p-menubar .p-menuitem-link {
   color: #ffffff;
 }
 
-.p-menubar .p-menuitem-link:hover {
+body .p-menubar .p-menuitem-link:hover {
   background: var(--primary-hover);
 }

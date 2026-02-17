@@ -1,6 +1,6 @@
 import { prisma } from '@/shared/prisma';
 import { User, RefreshToken } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
+import { createHash } from 'crypto';
 
 export class AuthRepository {
   async findUserByEmail(email: string): Promise<User | null> {
@@ -65,10 +65,7 @@ export class AuthRepository {
   }
 
   async hashToken(token: string): Promise<string> {
-    return bcrypt.hash(token, 10);
-  }
-
-  async compareTokenHash(token: string, hash: string): Promise<boolean> {
-    return bcrypt.compare(token, hash);
+    // SHA-256 is deterministic: perfect for DB lookups
+    return createHash('sha256').update(token).digest('hex');
   }
 }

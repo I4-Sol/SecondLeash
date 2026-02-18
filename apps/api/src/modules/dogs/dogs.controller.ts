@@ -7,9 +7,7 @@ export class DogsController {
 
   findAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ success: false, error: { message: 'Not authenticated' } });
-      }
+      const { role, shelterId } = req.user!;
 
       const filters = req.query as unknown as DogFilterInput;
 
@@ -19,8 +17,8 @@ export class DogsController {
           page: filters.page || 1,
           limit: filters.limit || 20,
         },
-        req.user.role,
-        req.user.shelterId
+        role,
+        shelterId
       );
 
       res.json({
@@ -35,13 +33,11 @@ export class DogsController {
 
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ success: false, error: { message: 'Not authenticated' } });
-      }
+      const { role, shelterId } = req.user!;
 
       const { id } = req.params;
 
-      const dog = await this.dogsService.findById(id, req.user.role, req.user.shelterId);
+      const dog = await this.dogsService.findById(id, role,shelterId);
 
       res.json({
         success: true,
@@ -54,13 +50,11 @@ export class DogsController {
 
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ success: false, error: { message: 'Not authenticated' } });
-      }
+      const { role, shelterId } = req.user!;
 
       const data = req.body as CreateDogInput;
 
-      const dog = await this.dogsService.create(data, req.user.role, req.user.shelterId);
+      const dog = await this.dogsService.create(data, role, shelterId);
 
       res.status(201).json({
         success: true,
@@ -73,14 +67,12 @@ export class DogsController {
 
   update = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ success: false, error: { message: 'Not authenticated' } });
-      }
+      const { role, shelterId } = req.user!;
 
       const { id } = req.params;
       const data = req.body as UpdateDogInput;
 
-      const dog = await this.dogsService.update(id, data, req.user.role, req.user.shelterId);
+      const dog = await this.dogsService.update(id, data, role, shelterId);
 
       res.json({
         success: true,
@@ -93,13 +85,11 @@ export class DogsController {
 
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ success: false, error: { message: 'Not authenticated' } });
-      }
+      const { role, shelterId } = req.user!;
 
       const { id } = req.params;
 
-      await this.dogsService.delete(id, req.user.role, req.user.shelterId);
+      await this.dogsService.delete(id, role, shelterId);
 
       res.json({
         success: true,

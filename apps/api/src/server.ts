@@ -81,6 +81,7 @@ const server = app.listen(PORT, HOST, () => {
   logger.info(`🔒 CORS origin: ${config.cors.origin}`);
 });
 
+
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
   logger.error('Unhandled Rejection at:', promise, 'reason:', reason);

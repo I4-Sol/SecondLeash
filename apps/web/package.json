@@ -12,11 +12,11 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@primeuix/themes": "^1.0.0",
     "axios": "^1.6.5",
     "pinia": "^2.1.7",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.0",
-    "@primeuix/themes": "^1.0.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "zod": "^3.22.4"
@@ -24,12 +24,12 @@
   "devDependencies": {
     "@types/node": "^20.11.5",
     "@vitejs/plugin-vue": "^5.0.3",
+    "@vitest/ui": "^4.0.18",
     "@vue/test-utils": "^2.4.3",
-    "@vitest/ui": "^1.2.1",
     "jsdom": "^23.2.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vitest": "^1.2.1",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18",
     "vue-tsc": "^2.0.0"
   }
 }

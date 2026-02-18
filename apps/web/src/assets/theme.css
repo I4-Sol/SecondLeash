@@ -40,6 +40,23 @@
   --border-color: var(--sky-blue);
   --border-light: var(--aquamarine);
 
+  --error-bg: #fee;
+  --error-text: #c33;
+
+  /* Status Badges - Light Mode */
+  --status-available-bg: #d4edda;
+  --status-available-text: #155724;
+  --status-on-hold-bg: #fff3cd;
+  --status-on-hold-text: #856404;
+  --status-adopted-bg: #d1ecf1;
+  --status-adopted-text: #0c5460;
+  --status-fostered-bg: #e2e3e5;
+  --status-fostered-text: #383d41;
+  --status-medical-bg: #f8d7da;
+  --status-medical-text: #721c24;
+  --status-unknown-bg: #e9ecef;
+  --status-unknown-text: #495057;
+
   /* PrimeVue 4 Variable Overrides - Light Mode */
   --p-primary-color: var(--azure);
   --p-primary-500: var(--azure);
@@ -135,6 +152,23 @@ html.my-app-dark body {
   --topbar-hover-bg: #1a1a1a !important;
   --topbar-text: #ffffff !important;
 
+  --error-bg: #b71c1c !important;
+  --error-text: #ffcdd2 !important;
+
+  /* Status Badges - Dark Mode */
+  --status-available-bg: #004d40 !important;
+  --status-available-text: #a5d6a7 !important;
+  --status-on-hold-bg: #827717 !important;
+  --status-on-hold-text: #fff59d !important;
+  --status-adopted-bg: #006064 !important;
+  --status-adopted-text: #80deea !important;
+  --status-fostered-bg: #424242 !important;
+  --status-fostered-text: #e0e0e0 !important;
+  --status-medical-bg: #b71c1c !important;
+  --status-medical-text: #ef9a9a !important;
+  --status-unknown-bg: #37474f !important;
+  --status-unknown-text: #b0bec5 !important;
+
   /* PrimeVue Variable Overrides */
   --p-primary-color: #ffffff !important;
   --p-primary-500: #ffffff !important;
@@ -167,9 +201,75 @@ html.my-app-dark body {
   --p-button-secondary-background: #333333 !important;
   --p-button-secondary-border-color: #333333 !important;
   --p-button-secondary-color: #ffffff !important;
+
+  /* DataTable Overrides */
+  --p-datatable-row-striped-background: #262626 !important;
+  --p-datatable-header-background: #1e1e1e !important;
+  --p-datatable-header-color: #ffffff !important;
+  --p-datatable-row-background: #1e1e1e !important;
+  --p-datatable-row-color: #ffffff !important;
+
+  /* Input Overrides */
+  --p-inputtext-background: #1e1e1e !important;
+  --p-inputtext-color: #ffffff !important;
+  --p-inputtext-border-color: #333333 !important;
+  --p-dropdown-background: #1e1e1e !important;
+  --p-dropdown-color: #ffffff !important;
+  --p-dropdown-border-color: #333333 !important;
+  --p-select-background: #1e1e1e !important;
+  --p-select-color: #ffffff !important;
+  --p-select-border-color: #333333 !important;
 }
 
 /* Structural overrides for things that don't use variables properly */
+html.my-app-dark .p-datatable .p-datatable-thead > tr > th {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+html.my-app-dark .p-datatable .p-datatable-tbody > tr {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+html.my-app-dark .p-datatable .p-datatable-tbody > tr.p-highlight {
+  background: #262626 !important;
+  color: #ffffff !important;
+}
+
+html.my-app-dark .p-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background: #262626 !important; /* Striped row manual override */
+}
+
+html.my-app-dark .p-dropdown,
+html.my-app-dark .p-multiselect,
+html.my-app-dark .p-calendar,
+html.my-app-dark .p-inputtext,
+html.my-app-dark .p-textarea {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+html.my-app-dark .p-dropdown-panel,
+html.my-app-dark .p-multiselect-panel,
+html.my-app-dark .p-datepicker {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+html.my-app-dark .p-dropdown-item,
+html.my-app-dark .p-multiselect-item {
+  color: #ffffff !important;
+}
+
+html.my-app-dark .p-dropdown-item:hover,
+html.my-app-dark .p-multiselect-item:hover {
+  background: #333333 !important;
+}
+
 html.my-app-dark body {
   background-color: var(--bg-lighter) !important;
   color: var(--text-color) !important;

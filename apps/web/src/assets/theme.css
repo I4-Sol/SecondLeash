@@ -1,4 +1,4 @@
-:root {
+:root, html:root {
   /* Color Palette - SecondLeash Theme */
   --pale-blue: #afeeee;
   --sky-blue: #87ceeb;
@@ -22,16 +22,13 @@
   --navy-blue: #000080;
   --midnight-blue: #191970;
 
-  /* Theme Mappings */
+  /* Theme Mappings - Light Mode */
   --primary-color: var(--azure);
   --primary-hover: var(--cerulean);
   --primary-active: var(--deep-sea-blue);
   
   --secondary-color: var(--deep-turquoise);
   --secondary-hover: var(--teal);
-  
-  --accent-color: var(--sea-green);
-  --success-color: var(--sea-green);
   
   --text-color: var(--midnight-blue);
   --text-secondary: var(--deep-sea-blue);
@@ -43,37 +40,44 @@
   --border-color: var(--sky-blue);
   --border-light: var(--aquamarine);
 
-  /* PrimeVue 4 Compatibility Mappings */
+  /* PrimeVue 4 Variable Overrides - Light Mode */
   --p-primary-color: var(--azure);
   --p-primary-500: var(--azure);
   --p-primary-hover-color: var(--cerulean);
   --p-primary-active-color: var(--deep-sea-blue);
+  --p-primary-contrast-color: #ffffff;
+
   --p-content-color: var(--text-color);
   --p-text-color: var(--text-color);
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f8fdfd;
+  --p-surface-100: var(--pale-blue);
 
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Custom component variables */
+  --topbar-bg: var(--primary-color);
+  --topbar-hover-bg: var(--primary-hover);
+  --topbar-text: #ffffff;
 }
 
-/* PrimeVue Theme Overrides */
+/* Base Styles */
 body {
-  --primary-color: var(--azure);
-  --primary-color-text: #ffffff;
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-lighter);
+  color: var(--text-color);
 }
 
-/* Increase specificity for PrimeVue components */
+/*
+  Light Mode Fixes
+  We still need these to force PrimeVue components to use OUR variables
+  instead of their internal defaults if they aren't fully mapped.
+*/
 body .p-button {
   background: var(--primary-color);
   border-color: var(--primary-color);
+  color: #ffffff;
 }
 
 body .p-button:not(:disabled):hover {
@@ -81,43 +85,114 @@ body .p-button:not(:disabled):hover {
   border-color: var(--primary-hover);
 }
 
-body .p-button:not(:disabled):active {
-  background: var(--primary-active);
-  border-color: var(--primary-active);
-}
-
-body .p-button-secondary,
-body .p-button.p-button-secondary {
+body .p-button-secondary {
   background: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
-body .p-button-success,
-body .p-button.p-button-success {
-  background: var(--success-color);
-  border-color: var(--success-color);
-}
-
-body .p-inputtext:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(0, 127, 255, 0.25);
-}
-
-body .p-datatable .p-datatable-thead > tr > th {
-  background: var(--bg-light);
-  color: var(--text-color);
-  border-color: var(--border-color);
-}
-
 body .p-menubar {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
+  background: var(--topbar-bg);
+  border: none;
+  border-radius: 0;
+}
+body .p-menubar .p-menuitem-link { color: var(--topbar-text); }
+body .p-menubar .p-menuitem-link:hover { background: var(--topbar-hover-bg); }
+body .p-menubar .p-menuitem-icon,
+body .p-menubar .p-menuitem-text { color: var(--topbar-text); }
+
+
+/* Dark Mode - Variable Overrides on HTML and BODY */
+html.my-app-dark,
+html.my-app-dark body {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --bg-light: #121212 !important;
+  --bg-lighter: #000000 !important;
+  --bg-white: #1e1e1e !important;
+
+  /* Text */
+  --text-color: #ffffff !important;
+  --text-secondary: #b0b0b0 !important;
+
+  /* Borders */
+  --border-color: #333333 !important;
+  --border-light: #444444 !important;
+
+  /* Theme Colors */
+  --primary-color: #ffffff !important;
+  --primary-hover: #e0e0e0 !important;
+  --primary-active: #cccccc !important;
+
+  --secondary-color: #333333 !important;
+  --secondary-hover: #444444 !important;
+
+  --accent-color: #888888 !important;
+  --success-color: #cccccc !important;
+
+  /* Custom component variables */
+  --topbar-bg: #000000 !important;
+  --topbar-hover-bg: #1a1a1a !important;
+  --topbar-text: #ffffff !important;
+
+  /* PrimeVue Variable Overrides */
+  --p-primary-color: #ffffff !important;
+  --p-primary-500: #ffffff !important;
+  --p-primary-hover-color: #e0e0e0 !important;
+  --p-primary-active-color: #cccccc !important;
+  --p-primary-contrast-color: #000000 !important;
+
+  --p-surface-0: #1e1e1e !important;
+  --p-surface-50: #000000 !important;
+  --p-surface-100: #1e1e1e !important;
+  --p-surface-200: #333333 !important;
+  --p-surface-300: #444444 !important;
+  --p-surface-400: #666666 !important;
+  --p-surface-500: #888888 !important;
+  --p-surface-600: #aaaaaa !important;
+  --p-surface-700: #cccccc !important;
+  --p-surface-800: #e0e0e0 !important;
+  --p-surface-900: #ffffff !important;
+  --p-surface-950: #ffffff !important;
+
+  --p-content-background: #1e1e1e !important;
+  --p-content-color: #ffffff !important;
+  --p-text-color: #ffffff !important;
+
+  /* Explicit Button Overrides */
+  --p-button-primary-background: #ffffff !important;
+  --p-button-primary-border-color: #ffffff !important;
+  --p-button-primary-color: #000000 !important;
+
+  --p-button-secondary-background: #333333 !important;
+  --p-button-secondary-border-color: #333333 !important;
+  --p-button-secondary-color: #ffffff !important;
 }
 
-body .p-menubar .p-menuitem-link {
-  color: #ffffff;
+/* Structural overrides for things that don't use variables properly */
+html.my-app-dark body {
+  background-color: var(--bg-lighter) !important;
+  color: var(--text-color) !important;
 }
 
-body .p-menubar .p-menuitem-link:hover {
-  background: var(--primary-hover);
+/* Fix for buttons in Dark Mode to ensure they pick up the variable if body .p-button is interfering */
+html.my-app-dark body .p-button {
+  background: var(--p-button-primary-background) !important;
+  border-color: var(--p-button-primary-border-color) !important;
+  color: var(--p-button-primary-color) !important;
+}
+
+html.my-app-dark body .p-button-secondary {
+  background: var(--p-button-secondary-background) !important;
+  border-color: var(--p-button-secondary-border-color) !important;
+  color: var(--p-button-secondary-color) !important;
+}
+
+html.my-app-dark .p-menubar {
+  background: #000000 !important;
+  border-bottom: 1px solid #333333 !important;
+}
+
+html.my-app-dark .p-menubar .p-menuitem-link:hover {
+  background: #1a1a1a !important;
 }

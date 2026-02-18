@@ -118,7 +118,7 @@ onMounted(async () => {
 }
 
 .stat-card {
-  background: white;
+  background: var(--bg-white);
   transition: transform 0.2s;
 }
 

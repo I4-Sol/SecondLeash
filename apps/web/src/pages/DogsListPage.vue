@@ -159,32 +159,32 @@ onMounted(() => {
 }
 
 .status-available {
-  background: #d4edda;
-  color: #155724;
+  background: var(--status-available-bg);
+  color: var(--status-available-text);
 }
 
 .status-on_hold {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--status-on-hold-bg);
+  color: var(--status-on-hold-text);
 }
 
 .status-adopted {
-  background: #d1ecf1;
-  color: #0c5460;
+  background: var(--status-adopted-bg);
+  color: var(--status-adopted-text);
 }
 
 .status-fostered {
-  background: #e2e3e5;
-  color: #383d41;
+  background: var(--status-fostered-bg);
+  color: var(--status-fostered-text);
 }
 
 .status-medical {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--status-medical-bg);
+  color: var(--status-medical-text);
 }
 
 .status-unknown {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--status-unknown-bg);
+  color: var(--status-unknown-text);
 }
 </style>

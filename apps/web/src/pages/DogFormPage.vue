@@ -234,8 +234,8 @@ onMounted(async () => {
 }
 
 .error-message {
-  background: #fee;
-  color: #c33;
+  background: var(--error-bg);
+  color: var(--error-text);
   padding: 0.75rem;
   border-radius: var(--radius-sm);
   display: flex;

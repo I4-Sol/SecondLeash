@@ -4,12 +4,19 @@
       <Menubar :model="menuItems">
         <template #start>
           <div class="logo-container">
-            <i class="pi pi-heart" style="font-size: 1.5rem; color: white; margin-right: 0.5rem"></i>
+            <i class="pi pi-heart" style="font-size: 1.5rem; color: var(--topbar-text); margin-right: 0.5rem"></i>
             <span class="logo-text">SecondLeash</span>
           </div>
         </template>
         <template #end>
           <div class="user-section">
+            <Button
+              :icon="isDark ? 'pi pi-sun' : 'pi pi-moon'"
+              text
+              rounded
+              @click="toggleTheme"
+              aria-label="Toggle Theme"
+            />
             <Avatar icon="pi pi-user" size="large" style="background-color: var(--accent-color); color: white" />
             <div class="user-info">
               <span class="user-name">{{ user?.fullName }}</span>
@@ -31,9 +38,11 @@
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
+import { useTheme } from '@/composables/useTheme';
 
 const router = useRouter();
 const authStore = useAuthStore();
+const { isDark, toggleTheme } = useTheme();
 
 const user = computed(() => authStore.user);
 
@@ -72,12 +81,12 @@ const handleLogout = async () => {
   align-items: center;
   font-weight: 600;
   font-size: 1.25rem;
-  color: white;
+  color: var(--topbar-text);
   padding-left: 1rem;
 }
 
 .logo-text {
-  color: white;
+  color: var(--topbar-text);
 }
 
 .user-section {
@@ -90,7 +99,7 @@ const handleLogout = async () => {
 .user-info {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--topbar-text);
 }
 
 .user-name {
@@ -112,20 +121,20 @@ const handleLogout = async () => {
 }
 
 :deep(.p-menubar) {
-  background: var(--primary-color);
+  background: var(--topbar-bg);
   border: none;
   border-radius: 0;
 }
 
 :deep(.p-menubar .p-menuitem-link) {
-  color: white;
+  color: var(--topbar-text);
 }
 
 :deep(.p-menubar .p-menuitem-link:hover) {
-  background: var(--primary-hover);
+  background: var(--topbar-hover-bg);
 }
 
 :deep(.p-button-text) {
-  color: white;
+  color: var(--topbar-text);
 }
 </style>

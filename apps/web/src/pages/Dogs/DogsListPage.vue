@@ -9,7 +9,7 @@
       <Card>
         <template #content>
           <div class="filters mb-3">
-            <Dropdown
+            <Select
               v-model="selectedStatus"
               :options="statusOptions"
               optionLabel="label"

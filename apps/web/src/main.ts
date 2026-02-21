@@ -22,6 +22,11 @@ import Menu from 'primevue/menu';
 import Dialog from 'primevue/dialog';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+import Select from 'primevue/select';
+import DatePicker from 'primevue/datepicker';
+import Tooltip from 'primevue/tooltip';
+
+
 
 // PrimeVue styles
 import 'primeicons/primeicons.css';
@@ -61,5 +66,8 @@ app.component('Avatar', Avatar);
 app.component('Menu', Menu);
 app.component('Dialog', Dialog);
 app.component('Toast', Toast);
+app.component('Select', Select);
+app.component('DatePicker', DatePicker);
+app.directive('tooltip', Tooltip);
 
 app.mount('#app');

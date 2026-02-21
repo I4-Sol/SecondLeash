@@ -40,8 +40,8 @@ app.get('/health', (_req, res) => {
 });
 
 // API Routes
-app.use('/auth', authRoutes);
-app.use('/dogs', dogsRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/dogs', dogsRoutes);
 
 // 404 handler
 app.use('*', (_req, res) => {

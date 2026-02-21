@@ -2,53 +2,20 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vu
 import { useAuthStore } from '@/stores/auth.store';
 import LoginPage from '@/pages/LoginPage.vue';
 import DashboardPage from '@/pages/DashboardPage.vue';
-import DogsListPage from '@/pages/DogsListPage.vue';
-import DogFormPage from '@/pages/DogFormPage.vue';
-import DogDetailPage from '@/pages/DogDetailPage.vue';
+import DogsListPage from '@/pages/Dogs/DogsListPage.vue';
+import DogFormPage from '@/pages/Dogs/DogFormPage.vue';
+import DogDetailPage from '@/pages/Dogs/DogDetailPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/login',
-      name: 'login',
-      component: LoginPage,
-      meta: { requiresAuth: false },
-    },
-    {
-      path: '/',
-      redirect: '/dashboard',
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: DashboardPage,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/dogs',
-      name: 'dogs',
-      component: DogsListPage,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/dogs/new',
-      name: 'dogs-new',
-      component: DogFormPage,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/dogs/:id/edit',
-      name: 'dog-edit',
-      component: DogFormPage,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: '/dogs/:id',
-      name: 'dog-detail',
-      component: DogDetailPage,
-      meta: { requiresAuth: true },
-    },
+    { path: '/login', name: 'login', component: LoginPage, meta: { requiresAuth: false },},
+    { path: '/', redirect: '/dashboard', },
+    { path: '/dashboard', name: 'dashboard', component: DashboardPage, meta: { requiresAuth: true },},
+    { path: '/dogs', name: 'dogs', component: DogsListPage, meta: { requiresAuth: true }, },
+    { path: '/dogs/new', name: 'dogs-new', component: DogFormPage, meta: { requiresAuth: true }, },
+    { path: '/dogs/:id/edit', name: 'dog-edit', component: DogFormPage, meta: { requiresAuth: true }, },
+    { path: '/dogs/:id', name: 'dog-detail', component: DogDetailPage, meta: { requiresAuth: true }, },
   ],
 });
 

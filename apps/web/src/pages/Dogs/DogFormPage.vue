@@ -17,7 +17,7 @@
 
               <div class="form-field">
                 <label for="sex">Sex *</label>
-                <Dropdown id="sex" v-model="formData.sex" :options="sexOptions" optionLabel="label" optionValue="value" required />
+                <Select id="sex" v-model="formData.sex" :options="sexOptions" optionLabel="label" optionValue="value" required />
               </div>
             </div>
 
@@ -29,14 +29,14 @@
 
               <div class="form-field">
                 <label for="size">Size *</label>
-                <Dropdown id="size" v-model="formData.size" :options="sizeOptions" optionLabel="label" optionValue="value" required />
+                <Select id="size" v-model="formData.size" :options="sizeOptions" optionLabel="label" optionValue="value" required />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-field">
                 <label for="birthdate">Approx. Birthdate</label>
-                <Calendar id="birthdate" v-model="birthdate" dateFormat="yy-mm-dd" showIcon />
+                <DatePicker id="birthdate" v-model="birthdate" dateFormat="yy-mm-dd" showIcon />
               </div>
 
               <div class="form-field">
@@ -53,14 +53,14 @@
 
               <div class="form-field">
                 <label for="intakeDate">Intake Date</label>
-                <Calendar id="intakeDate" v-model="intakeDate" dateFormat="yy-mm-dd" showIcon />
+                <DatePicker id="intakeDate" v-model="intakeDate" dateFormat="yy-mm-dd" showIcon />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-field full-width">
                 <label for="status">Status *</label>
-                <Dropdown id="status" v-model="formData.status" :options="statusOptions" optionLabel="label" optionValue="value" required />
+                <Select id="status" v-model="formData.status" :options="statusOptions" optionLabel="label" optionValue="value" required />
               </div>
             </div>
 
